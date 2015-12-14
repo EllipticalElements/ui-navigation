@@ -1,0 +1,54 @@
+{
+  "name": "ui-behaviors",
+  "description": "ui web component mixins",
+  "version": "0.1.1",
+  "main": "index.htm",
+  "authors": [
+    "S. Francis"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "web",
+    "components",
+    "ui",
+    "mixins",
+    "behaviors"
+  ],
+  "moduleType": [],
+  "homepage": "https;//github.com/ellipticaljs/ui-behaviors",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    ".gitignore",
+    ".npmignore",
+    "gulpfile.js",
+    "lib",
+    "docs",
+    "index.js",
+    "umd.js",
+    "package.json",
+    "demo",
+    "build.json",
+    "bundle.json",
+    ".nvmrc",
+    ".eslintrc",
+    "bin",
+    "CHANGELOG.md",
+    "demos",
+    "stylesheets",
+    "_index.scss",
+    "bk"
+  ],
+  "_release": "0.1.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.1",
+    "commit": "80b86af17eb24a3eae03780820d4a37f66c6afdf"
+  },
+  "_source": "git://github.com/EllipticalElements/ui-behaviors.git",
+  "_target": ">=0.1.1",
+  "_originalSource": "ui-behaviors"
+}

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Demo</title>
+    <script src="demo_components/elliptical-component/dist/webcomponents.js"></script>
+    <link rel="stylesheet" href="demo_components/elliptical-sass/dist/elliptical.css">
+    <link rel="import" href="demo_components/sass-core-icons/sass-core-icons.html">
+    <link rel="import" href="demo_components/sass-content-icons/sass-content-icons.html">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic" rel="stylesheet">
+    <link rel="import" href="demo_components/ui-navigation/polymer-navbar.html">
+    <link rel="import" href="demo_components/mark-down/mark-down.html">
+</head>
+<body>
+<ui-container>
+    <ui-navbar home-icon="icon-core-home-2">
+        <touch-drawer>
+            <touch-header>
+            </touch-header>
+            <touch-section header>
+            </touch-section>
+            <touch-section footer>
+            </touch-section>
+        </touch-drawer>
+        <touch-bar>
+            <ui-toggle></ui-toggle>
+            <touch-ui-brand><h3>My Brand</h3>
+            </touch-ui-brand>
+            <touch-icons>
+                <touch-icon>
+                    <span class="icon-content-more-vert gray"></span>
+                </touch-icon>
+            </touch-icons>
+        </touch-bar>
+        <ui-topbar class="static">
+            <section class="space-between">
+                <ui-menu class="default-light flush-left">
+                    <menu-item><a>Test</a></menu-item>
+                    <menu-item><a>Test Two</a></menu-item>
+                </ui-menu>
+                <ui-menu class="default-light">
+                    <menu-item><a>Sign-In</a></menu-item>
+                    <menu-item><a>Sign-Up</a></menu-item>
+                </ui-menu>
+            </section>
+        </ui-topbar>
+        <nav>
+            <header>
+                <h2>My Logo</h2>
+                <div style="width:400px">
+                    <ui-search role="search">
+                        <input type="text" placeholder="search">
+                    </ui-search>
+                </div>
+            </header>
+            <section class="bg-default-light">
+                <ui-menu>
+                    <menu-item-dropdown>
+                        <a>Link One</a>
+                        <ui-dropdown>
+                            <menu-item><a>Sublink One</a></menu-item>
+                            <menu-item><a>Sublink Two</a></menu-item>
+                            <menu-item><a>Sublink Three</a></menu-item>
+                        </ui-dropdown>
+                    </menu-item-dropdown>
+                    <menu-item-dropdown>
+                        <a>Link Two</a>
+                        <ui-dropdown>
+                            <menu-item><a>Sublink One</a></menu-item>
+                            <menu-item><a>Sublink Two</a></menu-item>
+                            <menu-item><a>Sublink Three</a></menu-item>
+                        </ui-dropdown>
+                    </menu-item-dropdown>
+                    <menu-item-dropdown>
+                        <a>Link Three</a>
+                        <ui-dropdown>
+                            <menu-item><a>Sublink One</a></menu-item>
+                            <menu-item><a>Sublink Two</a></menu-item>
+                            <menu-item><a>Sublink Three</a></menu-item>
+                        </ui-dropdown>
+                    </menu-item-dropdown>
+                    <menu-item><a>Link Four</a></menu-item>
+                    <menu-item><a>Link Five</a></menu-item>
+                </ui-menu>
+            </section>
+        </nav>
+    </ui-navbar>
+
+    <section class="content">
+        <grid-row>
+            <grid-columns class="default-12">
+                <h3>Markup</h3>
+                <hr>
+                <mark-down>
+                    ```html
+                    <xmp>
+                    <ui-navbar home-icon="icon-core-home-2">
+                        <touch-bar>
+                            <ui-toggle></ui-toggle>
+                            <touch-ui-brand><h3>My Brand</h3>
+                            </touch-ui-brand>
+                            <touch-icons>
+                                <touch-icon>
+                                    <span class="icon-content-more-vert gray"></span>
+                                </touch-icon>
+                            </touch-icons>
+                        </touch-bar>
+                        <ui-topbar class="static">
+                            <section class="space-between">
+                                <ui-menu class="default-light flush-left">
+                                    <menu-item><a>Test</a></menu-item>
+                                    <menu-item><a>Test Two</a></menu-item>
+                                </ui-menu>
+                                <ui-menu class="default-light">
+                                    <menu-item><a>Sign-In</a></menu-item>
+                                    <menu-item><a>Sign-Up</a></menu-item>
+                                </ui-menu>
+                            </section>
+                        </ui-topbar>
+                        <nav>
+                            <header>
+                                <h2>My Logo</h2>
+                                <div>
+                                    <ui-search role="search">
+                                        <input type="text" placeholder="search">
+                                    </ui-search>
+                                </div>
+                            </header>
+                            <section class="bg-default-light">
+                                <ui-menu>
+                                    <menu-item-dropdown>
+                                        <a>Link One</a>
+                                        <ui-dropdown>
+                                            <menu-item><a>Sublink One</a></menu-item>
+                                            <menu-item><a>Sublink Two</a></menu-item>
+                                            <menu-item><a>Sublink Three</a></menu-item>
+                                        </ui-dropdown>
+                                    </menu-item-dropdown>
+                                    <menu-item-dropdown>
+                                        <a>Link Two</a>
+                                        <ui-dropdown>
+                                            <menu-item><a>Sublink One</a></menu-item>
+                                            <menu-item><a>Sublink Two</a></menu-item>
+                                            <menu-item><a>Sublink Three</a></menu-item>
+                                        </ui-dropdown>
+                                    </menu-item-dropdown>
+                                    <menu-item-dropdown>
+                                        <a>Link Three</a>
+                                        <ui-dropdown>
+                                            <menu-item><a>Sublink One</a></menu-item>
+                                            <menu-item><a>Sublink Two</a></menu-item>
+                                            <menu-item><a>Sublink Three</a></menu-item>
+                                        </ui-dropdown>
+                                    </menu-item-dropdown>
+                                    <menu-item><a>Link Four</a></menu-item>
+                                    <menu-item><a>Link Five</a></menu-item>
+                                </ui-menu>
+                            </section>
+                        </nav>
+                    </ui-navbar>
+                    </xmp>
+                    ```
+                    ```js
+                    $(function(){
+                       $(window).on('ui.navbar.search',function(event,data){
+                           console.log(data);
+                       });
+                    });
+                    ```
+                </mark-down>
+                <p class="margin-top two">
+                    <a href="index.html" class="flex align-center">
+                        <span class="icon-content-arrow-back size-48"></span>
+                        <span>Back</span>
+                    </a>
+                </p>
+            </grid-columns>
+        </grid-row>
+    </section>
+    <footer>
+
+    </footer>
+<script>
+    $(function(){
+        $(window).on('ui.navbar.search',function(event,data){
+            console.log(data);
+        });
+    });
+</script>
+</ui-container>
+</body>
+</html>

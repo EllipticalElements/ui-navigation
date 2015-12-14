@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Demo</title>
+    <script src="demo_components/elliptical-component/dist/webcomponents.js"></script>
+    <link rel="stylesheet" href="demo_components/elliptical-sass/dist/elliptical.css">
+    <link rel="import" href="demo_components/sass-core-icons/sass-core-icons.html">
+    <link rel="stylesheet" href="demo_components/css-docs/docs.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic" rel="stylesheet">
+</head>
+<body>
+<header>
+    <h4>UI-NAVIGATION</h4>
+    <h5 class="padding-right hide-for-small">MOBILE FRIENDLY</h5>
+</header>
+<section class="doc-height">
+    <link rel="import" href="demo_components/mark-down/mark-down.html">
+    <grid-row>
+        <grid-columns class="default-12">
+            <h3>Examples</h3>
+            <hr>
+            <p>ui-navigation is a set of responsive, mobile-friendly navigation components: ui-navbar and ui-topbar. It includes versions for both elliptical and polymer web components.</p>
+            <h4>Demos</h4>
+            <p>
+                <a href="ui-topbar.html">elliptical ui-topbar</a>
+            </p>
+            <p>
+                <a href="polymer-topbar.html">polymer ui-topbar</a>
+            </p>
+            <p>
+                <a href="ui-navbar.html">elliptical ui-navbar</a>
+            </p>
+            <p>
+                <a href="polymer-navbar.html">polymer ui-navbar</a>
+            </p>
+
+            <h3>Installation</h3>
+            <hr>
+            <mark-down>
+                ```bash
+                bower install ui-navigation
+
+                ```
+                ```html
+                <xmp>
+                 <!--elliptical -->
+                 <link rel="stylesheet" href="bower_components/elliptical-sass/dist/elliptical.css">
+                 <link rel="import" href="bower_components/sass-core-icons/sass-core-icons.html">
+                 <link rel="import" href="bower_components/sass-content-icons/sass-content-icons.html">
+                 <link rel="import" href="bower_components/elliptical-component/elliptical-component.html">
+                 <link rel="import" href="bower_components/ui-navigation/ui-navbar.html" property="elliptical">
+
+                 <!-- polymer -->
+                 <link rel="stylesheet" href="bower_components/elliptical-sass/dist/elliptical.css">
+                 <link rel="import" href="bower_components/sass-core-icons/sass-core-icons.html">
+                 <link rel="import" href="bower_components/sass-content-icons/sass-content-icons.html">
+                 <link rel="import" href="bower_components/ui-navigation/polymer-navbar.html">
+                 </xmp>
+
+                ```
+            </mark-down>
+
+            <blockquote class="margin-top two info">
+                NOTE: Both the elliptical and polymer versions use the same custom tags, ui-topbar and ui-navbar, respectively.
+            </blockquote>
+
+            <blockquote class="margin-top two warning">
+                NOTE: for ui-topbar, substitute ui-topbar for ui-navbar in the above declarations.<br><br>
+                NOTE: should never declare both together...if using ui-navbar, only declare ui-navbar. Likewise, if using ui-topbar alone, only declare ui-topbar.
+            </blockquote>
+
+            <h3 class="margin-top two">Documentation</h3>
+            <hr>
+            <h4>UI-TOPBAR</h4>
+            ui-topbar is a reponsive bar component that relies on modern css flexbox for positioning of branding and menu elements within a top bar on desktop systems. On touch devices,
+            it behaves as a drawer menu.
+
+            <blockquote class="margin-top two warning">
+                IMPORTANT:<br>
+                both ui-topbar and ui-navbar must be wrapped by a ui-container element for the touch drawer to work correctly.
+            </blockquote>
+            <mark-down class="margin-top two">
+                ```html
+                <xmp>
+                <body>
+                  <ui-container>
+                      <ui-topbar></ui-topbar>
+
+                  </ui-container>
+                </body>
+                </xmp>
+                ```
+            </mark-down>
+
+            <h4 class="margin-top two">Markup</h4>
+            <mark-down class="margin-top">
+                ```html
+                <xmp>
+                <!-- base markup -->
+                <ui-topbar>
+                    <ui-toggle></ui-toggle>
+                    <touch-icons>
+                        <touch-icon>
+                            <span class="icon-content-more-vert gray"></span>
+                        </touch-icon>
+                    </touch-icons>
+                    <ui-brand>
+                        <h5>My Brand</h5>
+                    </ui-brand>
+                    <section> <!-- menu container -->
+                    </section>
+                </ui-topbar>
+
+                <!--extended markup -->
+                <ui-topbar>
+                    <touch-drawer><!--is placed within touch-ui-drawer-->
+                        <touch-header></touch-header>
+                        <touch-section header></touch-section>
+                        <touch-section footer></touch-section>
+                    </touch-drawer>
+                    <ui-toggle></ui-toggle>
+                    <touch-icons>
+                        <touch-icon>
+                            <span class="icon-content-more-vert gray"></span>
+                        </touch-icon>
+                    </touch-icons>
+                    <ui-brand>
+                        <h5>My Brand</h5>
+                    </ui-brand>
+                    <section>
+                       <ui-menu></ui-menu>
+                    </section>
+                </ui-topbar>
+
+                <!--section flex markup -->
+                <!--section tag width==grid width-->
+                <!-- space-between for ui-menu css components-->
+                <ui-topbar>
+                    <section class="space-between">
+                        <ui-menu></ui-menu>
+                        <ui-menu></ui-menu>
+                    </section>
+                </ui-topbar>
+
+                <!-- center for ui-menu-->
+                <ui-topbar>
+                    <section class="center">
+                        <ui-menu></ui-menu>
+                    </section>
+                </ui-topbar>
+
+                <!-- position an additional menu to the far right-end -->
+                <ui-topbar>
+                    <section></section>
+                    <ui-menu class="right"></ui-menu>
+                </ui-topbar>
+                </xmp>
+
+                ```
+            </mark-down>
+
+            <h4 class="margin-top two">UI-NAVBAR</h4>
+            ui-navbar is a reponsive, composite navigation component. On touch devices, it behaves as a drawer menu.
+            <h4 class="margin-top two">Markup</h4>
+            <mark-down class="margin-top">
+                ```html
+                <xmp>
+                <!-- Base Markup -->
+                <ui-navbar>
+                    <touch-bar>
+                        <ui-toggle></ui-toggle>
+                        <touch-ui-brand>
+                        </touch-ui-brand>
+                        <touch-icons>
+                            <touch-icon>
+                                <span class="icon-content-more-vert gray"></span>
+                            </touch-icon>
+                        </touch-icons>
+                    </touch-bar>
+                    <nav>
+
+                    </nav>
+                </ui-navbar>
+
+                <!-- extended markup-->
+                <ui-navbar>
+                    <ui-topbar></ui-topbar>
+                    <touch-drawer><!--is placed within touch-ui-drawer-->
+                        <touch-header></touch-header>
+                        <touch-section header></touch-section>
+                        <touch-section footer></touch-section>
+                    </touch-drawer>
+                    <touch-bar>
+                        <ui-toggle></ui-toggle>
+                        <touch-ui-brand>
+                        </touch-ui-brand>
+                        <touch-icons>
+                            <touch-icon>
+                                <span class="icon-content-more-vert gray"></span>
+                            </touch-icon>
+                        </touch-icons>
+                    </touch-bar>
+                    <nav>
+                        <header></header>
+                        <section></section> <!-- menu container -->
+                    </nav>
+                </ui-navbar>
+
+                <!-- nav menu flex positioning -->
+                <!-- center -->
+                <nav>
+                    <section>
+                        <ui-menu class="auto"></ui-menu>
+                    </section>
+                </nav>
+
+                <!-- left -->
+                <nav>
+                    <section>
+                        <ui-menu></ui-menu>
+                    </section>
+                </nav>
+
+                <!--space-between -->
+                <nav>
+                    <section>
+                        <div>
+                            <ui-menu></ui-menu>
+                            <ui-menu></ui-menu>
+                        </div>
+                    </section>
+                </nav>
+                </xmp>
+                ```
+            </mark-down>
+
+            <h4 class="margin-top two">TOUCH-UI-DRAWER</h4>
+            touch-ui-drawer is dynamically added to the DOM by the navigation components...it is not created from markup. The component will clone
+            touch-drawer markup to the drawer.
+
+            <mark-down class="margin-top two">
+                ```html
+                <xmp>
+                <ui-navbar>
+                  <touch-drawer>
+                      <touch-header></touch-header>
+                      <touch-section header></touch-section>
+                      <touch-section footer></touch-section>
+                  </touch-drawer>
+                </ui-navbar>
+                </xmp>
+                ```
+            </mark-down>
+
+            <p class="margin-top">
+            touch-ui-drawer populates the drawer by cloning ui-menu items to touch-ui-menu.
+            </p>
+            <h5 class="margin-top two">EXCLUDING MENUS</h5>
+            a ui-menu with attribute [touch-menu="false"] will not be added to the drawer.<br>
+            a menu-item, menu-item-dropdown with attribute [touch-menu-item="false"] will not be added to the drawer.
+            <mark-down class="margin-top two">
+                ```html
+                <xmp>
+                <ui-navbar>
+                    <nav>
+                        <section>
+                            <ui-menu touch-menu="false"></ui-menu>
+                        </section>
+                    </nav>
+                </ui-navbar>
+
+                <ui-navbar>
+                    <nav>
+                        <section>
+                            <ui-menu>
+                                <menu-item-dropdown touch-menu-item="false"></menu-item-dropdown>
+                            </ui-menu>
+                        </section>
+                    </nav>
+                </ui-navbar>
+                </xmp>
+                ```
+            </mark-down>
+
+            <h5 class="margin-top two">SEARCH</h5>
+            search elements with the attribute [role="search"] will be cloned to the ui-touch-drawer header
+            <mark-down class="margin-top two">
+                ```html
+                <xmp>
+                <ui-navbar>
+                    <nav>
+                        <header>
+                            <ui-search role="search">
+                                <input type="text" placeholder="search">
+                            </ui-search>
+                        </header>
+                    </nav>
+                </ui-navbar>
+                </xmp>
+                ```
+            </mark-down>
+
+            <h4 class="margin-top two">Properties</h4>
+            <hr>
+            <section class="docs margin-top two">
+                <h4>Public Properties</h4>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>transformDuration</span>
+                    <flex-box class="column">
+                        <span>{Numeric}</span>
+                        <span>touch menu slide duration(ms)</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span>default:</span>
+                        <span>250</span>
+                    </flex-box>
+                </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>transformDelay</span>
+                    <flex-box class="column">
+                        <span>{Numeric}</span>
+                        <span>activation delay when pressing ui-toggle</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span>default:</span>
+                        <span>0</span>
+                    </flex-box>
+                </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>includeHome</span>
+                    <flex-box class="column">
+                        <span>{Boolean}</span>
+                        <span>adds a home link to the top of the drawer menu</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span>default:</span>
+                        <span>true</span>
+                    </flex-box>
+                </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>homeUrl</span>
+                    <flex-box class="column">
+                        <span>{String}</span>
+                        <span>home url</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span>default:</span>
+                        <span>true</span>
+                    </flex-box>
+                </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>homeIcon</span>
+                    <flex-box class="column">
+                        <span>{String}</span>
+                        <span>home menu icon</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span>default:</span>
+                        <span>null</span>
+                    </flex-box>
+                </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>events</span>
+                    <flex-box class="column">
+                        <span>{Boolean}</span>
+                        <span>menu href handled by script</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span>default:</span>
+                        <span>false</span>
+                    </flex-box>
+                </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>touchEvents</span>
+                    <flex-box class="column">
+                        <span>{Boolean}</span>
+                        <span>touch menu href handled by script</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span>default:</span>
+                        <span>true</span>
+                    </flex-box>
+                </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>menu</span>
+                    <flex-box class="column">
+                        <span>{Array}</span>
+                        <span>menu items model added to the drawer</span>
+                        <span>Model</span>
+                        <span>[{ {String}icon, {String}label, {String}url, {Array}dropdown }]</span>
+                        <span>dropdown</span>
+                        <span>[{ {String}label, {String}url }]</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span>default:</span>
+                        <span>[]</span>
+                    </flex-box>
+                </flex-box>
+            </section>
+
+            <h4 class="margin-top two">Methods</h4>
+            <hr>
+            <section class="docs margin-top two">
+                <h4>Public Methods</h4>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>show</span>
+                    <flex-box class="column">
+                        <span>{void}</span>
+                        <span>show the drawer</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span>params: none</span>
+                    </flex-box>
+                </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>hide</span>
+                    <flex-box class="column">
+                        <span>{void}</span>
+                        <span>hide the drawer</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span>params: none</span>
+                    </flex-box>
+                </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>addMenuModel</span>
+                    <flex-box class="column">
+                        <span>{void}</span>
+                        <span>add menu items to the drawer</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span>params:</span>
+                        <span>{Array} model</span>
+                    </flex-box>
+                </flex-box>
+            </section>
+
+            <h4 class="margin-top two">Events</h4>
+            <hr>
+            <section class="docs margin-top two">
+                <h4>Public Events</h4>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>ui.[navbar].hide</span>
+                    <flex-box class="column">
+                        <span>thrown when drawer is hidden</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span></span>
+                    </flex-box>
+                </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>ui.[navbar].show</span>
+                    <flex-box class="column">
+                        <span>thrown when drawer is shown</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span></span>
+                    </flex-box>
+                </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>ui.[navbar].selected</span>
+                    <flex-box class="column">
+                        <span>thrown when menu item is selected</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span></span>
+                    </flex-box>
+                </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>ui.[navbar].search</span>
+                    <flex-box class="column">
+                        <span>thrown when search is submitted</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span></span>
+                    </flex-box>
+                </flex-box>
+            </section>
+
+           </grid-columns>
+    </grid-row>
+</section>
+<footer>
+    <h5>Demo</h5>
+    <flex-box class="links">
+        <a href="https://github.com/EllipticalElements/ui-navigation/tree/gh-pages">Demo Source</a>
+        <a href="https://github.com/EllipticalElements/ui-navigation">Project Home</a>
+    </flex-box>
+</footer>
+</body>
+</html>
