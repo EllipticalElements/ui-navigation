@@ -1,11 +1,12 @@
+<link rel="import" href="../ui-behaviors/drawer.html">
+<link rel="import" href="../ui-behaviors/navigation.html">
 <link rel="import" href="../ui-behaviors/navbar.html">
 
 <script>
 Elliptical(function(){
-    $.element('ui-topbar',[elliptical.extensions.drawer,elliptical.extensions.navigation,Elliptical.Behaviors.Navbar],{
+    $.element('ui-topbar',[Elliptical.Behaviors.Drawer,Elliptical.Behaviors.Navigation,Elliptical.Behaviors.Navbar],{
         options: {
             proxyUpgrade: true,
-            dataClass: null,
             transformDuration: 250,
             transformDelay: 0,
             translateX: '260px',
@@ -18,7 +19,8 @@ Elliptical(function(){
             homeIcon:null,
             model: [],
             events:false,
-            touchEvents:true
+            touchEvents:true,
+            easing:'ease-in-out'
         },
 
         _initElement: function(){

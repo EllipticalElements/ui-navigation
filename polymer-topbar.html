@@ -1,5 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../elliptical-polymer-behaviors/component-behavior.html">
+<link rel="import" href="../ui-behaviors/drawer.html">
+<link rel="import" href="../ui-behaviors/navigation.html">
 <link rel="import" href="../ui-behaviors/navbar.html">
 
 <script>
@@ -8,13 +10,9 @@
 
         is: 'ui-topbar',
 
-        behaviors:[Elliptical.ComponentBehavior,Elliptical.NavigationBehavior,Elliptical.Behaviors.Navbar],
+        behaviors:[Elliptical.ComponentBehavior,Elliptical.Behaviors.Drawer,Elliptical.Behaviors.Navigation,Elliptical.Behaviors.Navbar],
 
         properties: {
-            dataClass: {
-                type:String,
-                value:null
-            },
             transformDuration:{
                 value:250
             },
@@ -61,6 +59,10 @@
             touchEvents:{
                 type:Boolean,
                 value:true
+            },
+            easing:{
+                type:String,
+                value:'ease-in-out'
             }
 
         },
