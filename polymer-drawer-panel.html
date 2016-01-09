@@ -36,12 +36,17 @@
             easing:{
                 type:String,
                 value:'cubic-bezier(0.2, 0.3, 0.25, 0.9)'
+            },
+            homeUrl:{
+                type:String,
+                value:'/'
             }
         },
 
         ready:function(){
             this._createDrawer();
             this._event(this.element,this._data.click,'ui-toggle',this._onToggleClick.bind(this));
+            this._event(this.element,this._data.click,'[brand]',this._onBrandClick.bind(this));
             this._event($(document),this._data.click,'ui-sidebar [close]',this._hide.bind(this));
             this._event($(window),'navScrollTop',this._onNavScrollTop.bind(this));
         },
@@ -59,6 +64,11 @@
             setTimeout(function () {
                 self._show();
             }, self.touchDelay)
+        },
+
+        _onBrandClick:function(){
+            var homeUrl=this.homeUrl;
+            if(homeUrl) location.href=homeUrl;
         },
 
         _show:function(){
