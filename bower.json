@@ -1,7 +1,7 @@
 {
   "name": "ui-navigation",
   "description": "navigation web components",
-  "version":"1.0.5",
+  "version":"1.0.6",
   "main": "ui-navbar.html",
   "authors": [
     "S. Francis"
