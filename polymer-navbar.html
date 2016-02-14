@@ -52,10 +52,6 @@
                 type:Array,
                 value:[]
             },
-            events:{
-                type:Boolean,
-                value:false
-            },
             touchEvents:{
                 type:Boolean,
                 value:true
@@ -71,9 +67,6 @@
             if (this._mq.touch) {
                 this._createTouchNavigation(this.element, this.dataClass);
                 this._touchMenuEvents();
-            } else {
-                //bind desktop menu events
-                this._menuEvents();
             }
             //search handler
             var search = this.element.find('ui-search');
@@ -93,6 +86,7 @@
             this._event($(window),orientationEvent,this._onOrientationChange.bind(this));
             this._event(this.element,this._data.click,'ui-toggle',this._onToggleClick.bind(this));
             this._event($(window),'navScrollTop',this._onNavScrollTop.bind(this));
+            this._event(this.element,this._data.click,'[home]',this._onBrandClick.bind(this));
         },
 
         _onToggleClick:function(event){
@@ -108,6 +102,11 @@
             setTimeout(function () {
                 self._show();
             }, self.touchDelay)
+        },
+
+        _onBrandClick:function(){
+            var homeUrl=this.homeUrl;
+            if(homeUrl) location.href=homeUrl;
         }
 
     });

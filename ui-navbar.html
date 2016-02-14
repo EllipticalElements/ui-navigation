@@ -18,7 +18,6 @@ Elliptical(function(){
             homeUrl: '/',
             homeIcon:null,
             model: [],
-            events:false,
             touchEvents:true,
             easing:'ease-in-out'
         },
@@ -27,9 +26,6 @@ Elliptical(function(){
             if (this._mq.touch) {
                 this._createTouchNavigation(this.element, this.dataClass);
                 this._touchMenuEvents();
-            } else {
-                //bind desktop menu events
-                this._menuEvents();
             }
             //search handler
             var search = this.element.find('ui-search');
@@ -47,6 +43,7 @@ Elliptical(function(){
             this._data.set('toggle', toggle);
             var orientationEvent = this._device.orientationEvent;
             this._event($(window),orientationEvent,this._onOrientationChange.bind(this));
+            this._event(this.element,this._data.click,'[home]',this._onBrandClick.bind(this));
         },
 
         _events:{
@@ -60,6 +57,11 @@ Elliptical(function(){
 
         _onNavScrollTop:function(event){
             this._onScrollTop();
+        },
+
+        _onBrandClick:function(){
+            var homeUrl=this.homeUrl;
+            if(homeUrl) location.href=homeUrl;
         }
     });
 });
