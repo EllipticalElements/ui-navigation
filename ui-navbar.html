@@ -1,28 +1,69 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../elliptical-polymer-behaviors/component-behavior.html">
 <link rel="import" href="../ui-behaviors/drawer.html">
 <link rel="import" href="../ui-behaviors/navigation.html">
 <link rel="import" href="../ui-behaviors/navbar.html">
 
 <script>
-Elliptical(function(){
-    $.element('ui-navbar',[Elliptical.Behaviors.Drawer,Elliptical.Behaviors.Navigation,Elliptical.Behaviors.Navbar],{
-        options: {
-            proxyUpgrade: true,
-            transformDuration: 250,
-            transformDelay: 0,
-            translateX: '260px',
-            overlayOpacity: .5,
-            overlayOpenDuration: 0,
-            overlayCloseDuration: 150,
-            overlayBackground: '#000',
-            includeHome: true,
-            homeUrl: '/',
-            homeIcon:null,
-            model: [],
-            touchEvents:true,
-            easing:'ease-in-out'
+
+    Polymer({
+
+        is: 'ui-navbar',
+
+        behaviors:[Elliptical.ComponentBehavior,Elliptical.Behaviors.Drawer,Elliptical.Behaviors.Navigation,Elliptical.Behaviors.Navbar],
+
+        properties: {
+            transformDuration:{
+                value:250
+            },
+            transformDelay:{
+                value:0
+            },
+            translateX:{
+                type:String,
+                value:'260px'
+            },
+            overlayOpacity: {
+                value:.5
+            },
+            overlayOpenDuration:{
+                value:0
+            },
+            overlayCloseDuration: {
+                value:150
+            },
+            overlayBackground: {
+                type:String,
+                value:'#000'
+            },
+            includeHome: {
+                type:Boolean,
+                value:true
+            },
+            homeUrl: {
+                type:String,
+                value:'/'
+            },
+            homeIcon:{
+                type:String,
+                value:null
+            },
+            model: {
+                type:Array,
+                value:[]
+            },
+            touchEvents:{
+                type:Boolean,
+                value:true
+            },
+            easing:{
+                type:String,
+                value:'ease-in-out'
+            }
+
         },
 
-        _initElement: function(){
+        ready:function(){
             if (this._mq.touch) {
                 this._createTouchNavigation(this.element, this.dataClass);
                 this._touchMenuEvents();
@@ -43,12 +84,9 @@ Elliptical(function(){
             this._data.set('toggle', toggle);
             var orientationEvent = this._device.orientationEvent;
             this._event($(window),orientationEvent,this._onOrientationChange.bind(this));
+            this._event(this.element,this._data.click,'ui-toggle',this._onToggleClick.bind(this));
+            this._event($(window),'navScrollTop',this._onNavScrollTop.bind(this));
             this._event(this.element,this._data.click,'[home]',this._onBrandClick.bind(this));
-        },
-
-        _events:{
-            'ui-toggle@click':'_onToggleClick',
-            'window@navScrollTop':'_onNavScrollTop'
         },
 
         _onToggleClick:function(event){
@@ -59,10 +97,18 @@ Elliptical(function(){
             this._onScrollTop();
         },
 
+        _onScrollTop:function(){
+            var self=this;
+            setTimeout(function () {
+                self._show();
+            }, self.touchDelay)
+        },
+
         _onBrandClick:function(){
             var homeUrl=this.homeUrl;
             if(homeUrl) location.href=homeUrl;
         }
+
     });
-});
+
 </script>
