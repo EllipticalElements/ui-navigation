@@ -59,24 +59,31 @@
             easing:{
                 type:String,
                 value:'ease-in-out'
+            },
+            touchDelay:{
+                type:Number,
+                value:750
             }
 
         },
 
         ready:function(){
+            var self=this;
+            var delay=this.touchDelay;
             if (this._mq.touch) {
-                this._createTouchNavigation(this.element, this.dataClass);
-                this._touchMenuEvents();
+                setTimeout(function(){
+                    self._createTouchNavigation(self.element, self.dataClass);
+                    self._touchMenuEvents();
+                },delay);
             }
             //search handler
-            var search = this.element.find('ui-search');
+            var search = this.element.find('[role="search"]');
             if(search[0]){
                 //save ref
-                //this._data.input=search_.find('input');
                 var input=search.find('input');
                 this._data.set('input',input);
                 //desktop search handler
-                this._onSearch(input,'desktop');
+                this._onDesktopSearch(input);
             }
             //if not touch device, call desktop events
             if(!this._device.touch) this._desktopEvents();
@@ -107,6 +114,11 @@
         _onBrandClick:function(){
             var homeUrl=this.homeUrl;
             if(homeUrl) location.href=homeUrl;
+        },
+
+        _dispose:function(){
+            this._navbarDispose();
+            this._navigationDispose();
         }
 
     });
