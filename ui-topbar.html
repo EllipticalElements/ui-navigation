@@ -83,13 +83,11 @@
                 },delay);
             }
             //search handler
-            var search = this.element.find('[role="search"]');
+            var search = this.element.find('input[role="search"]');
             if(search[0]){
-                //save ref
-                var input=search.find('input');
-                this._data.set('input',input);
+                this._data.set('input',search);
                 //desktop search handler
-                this._onDesktopSearch(input);
+                this._onDesktopSearch(search);
             }
             //if not touch device, call desktop events
             if(!this._device.touch) this._desktopEvents();
