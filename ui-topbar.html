@@ -72,6 +72,8 @@
         },
 
         ready:function(){
+            var navbar=this.element.parents('ui-navbar');
+            if(navbar[0]) return;
             var self=this;
             var delay=this.cloneDelay;
             if (this._mq.touch) {
