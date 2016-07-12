@@ -1,10 +1,7 @@
 UI-NAVIGATION
 ===========================
 
-# NOTE
-ui-navigation is now a polymer-only set of web components
-
-ui-navigation is a set of responsive, mobile-friendly navigation components: ui-navbar, ui-topbar and ui-drawer-panel. It includes versions for both elliptical and polymer web components.
+ui-navigation is a set of polymer, mobile-friendly navigation web components: ui-navbar, ui-topbar and ui-drawer-panel.
 
 # Installation
 
@@ -20,8 +17,15 @@ bower install ui-navigation
 
 ```html
 
-<link rel="import" href="bower_components/ui-navigation/ui-topbar.html">
+<link rel="import" href="bower_components/ui-navigation/ui-navigation.html">
 
+<!-- no sass -->
+<link rel="import" href="bower_components/ui-navigation/ui-navigation-no-sass.html">
+
+<!-- individually -->
+<link rel="import" href="bower_components/ui-navigation/ui-topbar.html">
+<link rel="import" href="bower_components/ui-navigation/ui-navbar.html">
+<link rel="import" href="bower_components/ui-navigation/ui-drawer-panel.html">
 
 ```
 
