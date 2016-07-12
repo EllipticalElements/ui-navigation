@@ -1,7 +1,7 @@
 {
   "name": "ui-navigation",
   "description": "navigation web components",
-  "version":"1.2.4",
+  "version":"1.2.5",
   "main": "ui-navbar.html",
   "authors": [
     "S. Francis"
@@ -44,6 +44,7 @@
     "sass-core-icons": "~1.0.4",
     "sass-content-icons": "~1.0.4",
     "polymer": "Polymer/polymer#^1.0.0",
-    "ui-behaviors": ">1.1.0"
+    "ui-behaviors": ">1.2.0",
+    "ui-button-dropdown":"~1.2.0"
   }
 }
