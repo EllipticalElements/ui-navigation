@@ -62,6 +62,10 @@
             },
             touchDelay:{
                 type:Number,
+                value:50
+            },
+            cloneDelay:{
+                type:Number,
                 value:750
             }
 
@@ -69,7 +73,7 @@
 
         ready:function(){
             var self=this;
-            var delay=this.touchDelay;
+            var delay=this.cloneDelay;
             if (this._mq.touch) {
                 setTimeout(function(){
                     self._createTouchNavigation(self.element, self.dataClass);
