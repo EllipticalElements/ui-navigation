@@ -1,7 +1,7 @@
 {
   "name": "elliptical-container",
   "description": "An es6 Map dependency injection container",
-  "version": "1.0.3",
+  "version": "1.1.2",
   "main": "dist/elliptical.container.js",
   "authors": [
     "S. Francis"
@@ -29,15 +29,36 @@
     "umd.js",
     "package.json",
     "demo",
-    "index.html"
+    "index.html",
+    ".gitignore",
+    ".npmignore",
+    "gulpfile.js",
+    "lib",
+    "docs",
+    "index.js",
+    "umd.js",
+    "package.json",
+    "demo",
+    "index.html",
+    "build.json",
+    "bundle.json",
+    ".nvmrc",
+    ".eslintrc",
+    "bin",
+    "CHANGELOG.md",
+    "demos",
+    "stylesheets",
+    "_index.scss",
+    "bk",
+    "sassdoc"
   ],
-  "_release": "1.0.3",
+  "_release": "1.1.2",
   "_resolution": {
     "type": "version",
-    "tag": "v1.0.3",
-    "commit": "0bfbb81c06e0920bf335258c4d2c1466163ce8bc"
+    "tag": "v1.1.2",
+    "commit": "9dba2e9ab3a6fc0fd2c3a20daba8e3b317a9f140"
   },
-  "_source": "git://github.com/ellipticaljs/container.git",
-  "_target": "~1.0.1",
+  "_source": "https://github.com/ellipticaljs/container.git",
+  "_target": "~1.1.0",
   "_originalSource": "elliptical-container"
 }

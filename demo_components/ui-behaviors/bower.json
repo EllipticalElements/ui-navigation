@@ -1,7 +1,7 @@
 {
   "name": "ui-behaviors",
   "description": "ui web component mixins",
-  "version":"0.1.1",
+  "version": "1.2.3",
   "main": "index.htm",
   "authors": [
     "S. Francis"
@@ -15,7 +15,7 @@
     "behaviors"
   ],
   "moduleType": [],
-  "homepage": "https;//github.com/ellipticaljs/ui-behaviors",
+  "homepage": "https;//github.com/EllipticalElements/ui-behaviors",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -41,5 +41,9 @@
     "stylesheets",
     "_index.scss",
     "bk"
-  ]
+  ],
+  "dependencies": {
+    "elliptical-polymer-behaviors": "~1.2.0",
+    "elliptical-mutation-summary": "~1.0.2"
+  }
 }

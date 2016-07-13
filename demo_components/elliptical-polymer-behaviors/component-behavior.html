@@ -1,7 +1,8 @@
 <link rel="import" href="../component-extensions/component-extensions.html">
 <link rel="import" href="../elliptical-container/elliptical-container.html">
-<script src="dist/elliptical.init.js"></script>
+<link rel="import" href="../Elliptical-micro/Elliptical-micro.html">
 <script>
+
     //Base Component Behavior
     Elliptical.ComponentBehavior={};
     Elliptical.ComponentBehavior.properties={
@@ -30,6 +31,11 @@
         this._data.events=[];
     };
 
+    Elliptical.ComponentBehavior._location=function(url){
+        if(window._location) window._location.href=url;
+        else location.href=url;
+    };
+
     //use click-event instead of on-click to avoid conflicts
     Elliptical.ComponentBehavior._delegateEventListener=function(){
         this.element.on(this._data.click,'[click-event]',this._listenerCallback.bind(this));
@@ -43,6 +49,11 @@
                 this[fn](event);
             }
         }
+    };
+
+    Elliptical.ComponentBehavior._viewData=function(prop){
+        if(!window.__viewData) window.__viewData={};
+        return window.__viewData;
     };
 
     Elliptical.ComponentBehavior.__press=function(){
@@ -89,28 +100,39 @@
         if(name===undefined){
             name=this.service;
         }
-        return elliptical.Container.getType(name);
+
+        return elliptical.container.getType(name);
     };
 
     Elliptical.ComponentBehavior.$serviceAsync=function(name,callback){
-        if(name===undefined){
+        if(callback===undefined){
             callback=name;
             name=this.service;
         }
-        elliptical.Container.getTypeAsync(name,callback);
+
+        elliptical.container.getTypeAsync(name,callback);
     };
 
 
     Elliptical.ComponentBehavior._bindPublicElementMethods=function(){
         var self=this;
         var node=this;
-        node.hide=function(){
-            self._hide();
-        };
-
-        node.show=function(){
-            self._show();
-        };
+        if(!node._show){
+            node._show=function(){};
+        }
+        if(!node._hide){
+            node._hide=function(){};
+        }
+        if(!node.show){
+            node.show=function(){
+                self._show();
+            };
+        }
+        if(!node.hide){
+            node.hide=function(){
+                self._hide();
+            };
+        }
 
     };
 
@@ -158,6 +180,8 @@
 
     Elliptical.ComponentBehavior._dispose=function(){};
 
+
+
     Elliptical.ComponentBehavior.created=function(){
         this.element=$(this);
         this._createDataStore();
@@ -168,12 +192,20 @@
         this.__setElementProperties();
         this._setChildrenAttributes();
         this._bindPublicElementMethods();
+
     };
 
-    Elliptical.ComponentBehavior.detached=function(){
+
+
+    Elliptical.ComponentBehavior._destroy=function(){
         this._disposeEventListener();
         this._unbindEvents();
         this._dispose();
+    };
+
+
+    Elliptical.ComponentBehavior.detached=function(){
+        this._destroy();
         this._data._store=null;
         this._data.events.length=0;
     };

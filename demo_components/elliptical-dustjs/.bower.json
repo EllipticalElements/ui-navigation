@@ -60,7 +60,7 @@
     "tag": "v2.7.11",
     "commit": "589cb1f0266fc14624e9836d13b26201c9d001d8"
   },
-  "_source": "git://github.com/ellipticaljs/dustjs.git",
+  "_source": "https://github.com/ellipticaljs/dustjs.git",
   "_target": "~2.7.3",
   "_originalSource": "elliptical-dustjs"
 }

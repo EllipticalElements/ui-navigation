@@ -48,7 +48,7 @@
     "tag": "v1.0.2",
     "commit": "fec98fa7d70c3972a5233af0e833642b43382439"
   },
-  "_source": "git://github.com/ellipticaljs/sass-ubuntu.git",
+  "_source": "https://github.com/ellipticaljs/sass-ubuntu.git",
   "_target": "~1.0.2",
   "_originalSource": "sass-ubuntu"
 }

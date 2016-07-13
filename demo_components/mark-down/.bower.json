@@ -39,7 +39,7 @@
     "tag": "v1.0.6",
     "commit": "075034d6c144a5d2d778ec82c73e34e1fbce9cef"
   },
-  "_source": "git://github.com/ellipticaljs/mark-down.git",
+  "_source": "https://github.com/ellipticaljs/mark-down.git",
   "_target": "~1.0.5",
   "_originalSource": "elliptical-mark-down"
 }

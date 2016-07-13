@@ -48,7 +48,7 @@
     "tag": "v1.0.5",
     "commit": "5c08c34d776a06b74228466c975aea108bf1b75f"
   },
-  "_source": "git://github.com/ellipticaljs/sass-content-icons.git",
+  "_source": "https://github.com/ellipticaljs/sass-content-icons.git",
   "_target": "~1.0.4",
   "_originalSource": "sass-content-icons"
 }

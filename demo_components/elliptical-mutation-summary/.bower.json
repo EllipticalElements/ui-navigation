@@ -47,7 +47,7 @@
     "tag": "v1.0.2",
     "commit": "ab86d8ae120f1f0ae1fa808e6461b8b98dee20ed"
   },
-  "_source": "git://github.com/ellipticaljs/mutation-summary.git",
-  "_target": "~1.0.1",
+  "_source": "https://github.com/ellipticaljs/mutation-summary.git",
+  "_target": "~1.0.2",
   "_originalSource": "elliptical-mutation-summary"
 }

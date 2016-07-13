@@ -1,0 +1,11 @@
+{
+  "name": "ui-button-dropdown",
+  "description": "button dropdown web component",
+  "version": "1.2.0",
+  "author": "S. Francis",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EllipticalElements/ui-button-dropdown.git"
+  }
+}

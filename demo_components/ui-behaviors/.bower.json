@@ -1,7 +1,7 @@
 {
   "name": "ui-behaviors",
   "description": "ui web component mixins",
-  "version": "0.1.1",
+  "version": "1.2.3",
   "main": "index.htm",
   "authors": [
     "S. Francis"
@@ -15,7 +15,7 @@
     "behaviors"
   ],
   "moduleType": [],
-  "homepage": "https;//github.com/ellipticaljs/ui-behaviors",
+  "homepage": "https;//github.com/EllipticalElements/ui-behaviors",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -42,13 +42,17 @@
     "_index.scss",
     "bk"
   ],
-  "_release": "0.1.1",
+  "dependencies": {
+    "elliptical-polymer-behaviors": "~1.2.0",
+    "elliptical-mutation-summary": "~1.0.2"
+  },
+  "_release": "1.2.3",
   "_resolution": {
     "type": "version",
-    "tag": "v0.1.1",
-    "commit": "80b86af17eb24a3eae03780820d4a37f66c6afdf"
+    "tag": "v1.2.3",
+    "commit": "ea2587e7677b41ecc23192e3bb99bfbb6e9611a6"
   },
-  "_source": "git://github.com/EllipticalElements/ui-behaviors.git",
-  "_target": ">=0.1.1",
+  "_source": "https://github.com/EllipticalElements/ui-behaviors.git",
+  "_target": ">1.1.0",
   "_originalSource": "ui-behaviors"
 }

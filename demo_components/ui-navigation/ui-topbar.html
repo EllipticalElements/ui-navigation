@@ -1,47 +1,93 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../ui-behaviors/component-behavior.html">
+<link rel="import" href="../ui-behaviors/drawer.html">
+<link rel="import" href="../ui-behaviors/navigation.html">
 <link rel="import" href="../ui-behaviors/navbar.html">
 
 <script>
-Elliptical(function(){
-    $.element('ui-topbar',[elliptical.extensions.drawer,elliptical.extensions.navigation,Elliptical.Behaviors.Navbar],{
-        options: {
-            proxyUpgrade: true,
-            dataClass: null,
-            transformDuration: 250,
-            transformDelay: 0,
-            translateX: '260px',
-            overlayOpacity: .5,
-            overlayOpenDuration: 0,
-            overlayCloseDuration: 150,
-            overlayBackground: '#000',
-            includeHome: true,
-            homeUrl: '/',
-            homeIcon:null,
-            model: [],
-            events:false,
-            touchEvents:true
+
+    Polymer({
+
+        is: 'ui-topbar',
+
+        behaviors:[Elliptical.ComponentBehavior,Elliptical.Behaviors.Drawer,Elliptical.Behaviors.Navigation,Elliptical.Behaviors.Navbar],
+
+        properties: {
+            transformDuration:{
+                value:250
+            },
+            transformDelay:{
+                value:0
+            },
+            translateX:{
+                type:String,
+                value:'260px'
+            },
+            overlayOpacity: {
+                value:.5
+            },
+            overlayOpenDuration:{
+                value:0
+            },
+            overlayCloseDuration: {
+                value:150
+            },
+            overlayBackground: {
+                type:String,
+                value:'#000'
+            },
+            includeHome: {
+                type:Boolean,
+                value:true
+            },
+            homeUrl: {
+                type:String,
+                value:'/'
+            },
+            homeIcon:{
+                type:String,
+                value:null
+            },
+            model: {
+                type:Array,
+                value:[]
+            },
+            disableTouchEvents:{
+                type:Boolean,
+                value:false
+            },
+            easing:{
+                type:String,
+                value:'ease-in-out'
+            },
+            touchDelay:{
+                type:Number,
+                value:50
+            },
+            cloneDelay:{
+                type:Number,
+                value:750
+            }
+
         },
 
-        _initElement: function(){
-            var parents = this.element.parents('navbar');
-            if (parents[0]) {
-                return false;
-            }
+        ready:function(){
+            var navbar=this.element.parents('ui-navbar');
+            if(navbar[0]) return;
+            var self=this;
+            var delay=this.cloneDelay;
             if (this._mq.touch) {
-                this._createTouchNavigation(this.element, this.dataClass);
-                this._touchMenuEvents();
-            } else {
-                //bind desktop menu events
-                this._menuEvents();
+                setTimeout(function(){
+                    self._createTouchNavigation(self.element, self.dataClass);
+                    self._touchMenuEvents();
+                },delay);
             }
             //search handler
-            var search = this.element.find('ui-search');
+            var search = this.element.find('input[role="search"]');
             if(search[0]){
-                //save ref
-                //this._data.input=search_.find('input');
-                var input=search.find('input');
-                this._data.set('input',input);
+                this._data.set('input',search);
                 //desktop search handler
-                this._onSearch(input,'desktop');
+                this._onDesktopSearch(search);
             }
             //if not touch device, call desktop events
             if(!this._device.touch) this._desktopEvents();
@@ -49,11 +95,9 @@ Elliptical(function(){
             this._data.set('toggle', toggle);
             var orientationEvent = this._device.orientationEvent;
             this._event($(window),orientationEvent,this._onOrientationChange.bind(this));
-        },
-
-        _events:{
-            'ui-toggle@click':'_onToggleClick',
-            'window@navScrollTop':'_onNavScrollTop'
+            this._event(this.element,this._data.click,'ui-toggle',this._onToggleClick.bind(this));
+            this._event($(window),'navScrollTop',this._onNavScrollTop.bind(this));
+            this._event(this.element,this._data.click,'[home]',this._onBrandClick.bind(this));
         },
 
         _onToggleClick:function(event){
@@ -62,7 +106,25 @@ Elliptical(function(){
 
         _onNavScrollTop:function(event){
             this._onScrollTop();
+        },
+
+        _onScrollTop:function(){
+            var self=this;
+            setTimeout(function () {
+                self._show();
+            }, self.touchDelay)
+        },
+
+        _onBrandClick:function(){
+            var homeUrl=this.homeUrl;
+            if(homeUrl) location.href=homeUrl;
+        },
+
+        _dispose:function(){
+            this._navbarDispose();
+            this._navigationDispose();
         }
+
     });
-});
+
 </script>

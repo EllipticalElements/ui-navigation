@@ -1,7 +1,7 @@
 {
   "name": "jquery-extensions",
   "description": "jquery extensions library",
-  "version": "1.0.5",
+  "version": "1.0.12",
   "main": "dist/jquery.extensions.js",
   "authors": [
     "S. Francis"
@@ -33,15 +33,15 @@
     "bundle.json"
   ],
   "dependencies": {
-    "elliptical-jquery": ">=3.0.0"
+    "jquery-import": "~1.0.2"
   },
-  "_release": "1.0.5",
+  "_release": "1.0.12",
   "_resolution": {
     "type": "version",
-    "tag": "v1.0.5",
-    "commit": "83141159a9cda3baedd51b93a44628706c8018cf"
+    "tag": "v1.0.12",
+    "commit": "7e20a95dc4b1ca8d9c8d62a0fda52ef84b6a1fe0"
   },
-  "_source": "git://github.com/ellipticaljs/jquery-extensions.git",
+  "_source": "https://github.com/ellipticaljs/jquery-extensions.git",
   "_target": "~1.0.0",
   "_originalSource": "jquery-extensions"
 }

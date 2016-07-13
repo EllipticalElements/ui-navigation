@@ -1,7 +1,7 @@
 {
   "name": "elliptical-utils",
   "description": "es6 javascript utilities lib",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "main": "dist/elliptical.utils.js",
   "authors": [
     "S. Francis"
@@ -30,13 +30,13 @@
     "package.json",
     "index.js"
   ],
-  "_release": "2.0.4",
+  "_release": "2.1.0",
   "_resolution": {
     "type": "version",
-    "tag": "v2.0.4",
-    "commit": "50e9373719cca5aafd70762366b714249039f435"
+    "tag": "v2.1.0",
+    "commit": "c8a4f76fee8c8144bb933ae5155f9def1af0881c"
   },
-  "_source": "git://github.com/ellipticaljs/utils.git",
-  "_target": "~2.0.0",
+  "_source": "https://github.com/ellipticaljs/utils.git",
+  "_target": "~2.1.0",
   "_originalSource": "elliptical-utils"
 }

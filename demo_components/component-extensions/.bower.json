@@ -1,7 +1,7 @@
 {
   "name": "component-extensions",
   "description": "prototype extensions/behaviors for web components",
-  "version": "1.0.15",
+  "version": "1.1.0",
   "main": "dist/component-extensions.js",
   "authors": [
     "S. Francis"
@@ -38,22 +38,20 @@
     ".eslintrc",
     "bin",
     "CHANGELOG.md",
-    "demos"
+    "demos",
+    "bk"
   ],
   "dependencies": {
     "jquery-extensions": "~1.0.0",
-    "elliptical-utils": "~2.0.0",
-    "elliptical-dustjs": "~2.7.3",
-    "jquery-mutation-summary": "~1.0.1",
-    "elliptical-dust-helpers": "~1.0.1"
+    "elliptical-utils": "~2.1.0"
   },
-  "_release": "1.0.15",
+  "_release": "1.1.0",
   "_resolution": {
     "type": "version",
-    "tag": "v1.0.15",
-    "commit": "fb7a081bb010bd02d3649b8b2f69764a9e413791"
+    "tag": "v1.1.0",
+    "commit": "94c3e694f384f7fede25100b6c0c745fd36eb280"
   },
-  "_source": "git://github.com/ellipticaljs/component-extensions.git",
-  "_target": "~1.0.1",
+  "_source": "https://github.com/ellipticaljs/component-extensions.git",
+  "_target": "~1.1.0",
   "_originalSource": "component-extensions"
 }

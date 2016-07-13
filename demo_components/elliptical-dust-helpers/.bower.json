@@ -1,7 +1,7 @@
 {
   "name": "elliptical-dust-helpers",
   "description": "Dust Helpers",
-  "version": "1.0.6",
+  "version": "1.0.16",
   "main": "dist/dust.helpers.js",
   "authors": [
     "S. Francis"
@@ -39,15 +39,15 @@
   ],
   "dependencies": {
     "elliptical-dustjs": "~2.7.3",
-    "elliptical-utils": "~2.0.0"
+    "elliptical-utils": "~2.1.0"
   },
-  "_release": "1.0.6",
+  "_release": "1.0.16",
   "_resolution": {
     "type": "version",
-    "tag": "v1.0.6",
-    "commit": "75dcf4c2278a7d9a85730b64cd13c09e9f29b119"
+    "tag": "v1.0.16",
+    "commit": "0197f522e6a0546eaebfa0986b04b416177ad141"
   },
-  "_source": "git://github.com/ellipticaljs/dust-helpers.git",
+  "_source": "https://github.com/ellipticaljs/dust-helpers.git",
   "_target": "~1.0.1",
   "_originalSource": "elliptical-dust-helpers"
 }

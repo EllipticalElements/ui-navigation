@@ -459,7 +459,6 @@ return dust;
 
 }));
 
-
 /*
  * =============================================================
  * dust helpers
@@ -555,6 +554,20 @@ return dust;
         return chunk.write(checked);
     };
 
+    dust.helpers.radioChecked=function(chunk,context,bodies,params){
+        var value = dust.helpers.tap(params.value, chunk, context);
+        var key= dust.helpers.tap(params.key, chunk, context);
+        var checked='';
+        try{
+            if(value && value.toLowerCase()===key.toLowerCase()){
+                checked='data-checked="true"';
+            }
+        }catch(ex){
+
+        }
+        return chunk.write(checked);
+    };
+
 
     dust.helpers.selected=function(chunk,context,bodies,params){
         var value = dust.helpers.tap(params.value, chunk, context);
@@ -570,6 +583,14 @@ return dust;
         return chunk.write(selected);
     };
 
+    dust.helpers.selectedPage=function(chunk,context,bodies,params){
+        var index=context.stack.index + 1;
+        var page=dust.helpers.tap(params.page, chunk, context);
+        page=parseInt(page);
+        if(page===index) return chunk.write('selected');
+        else return chunk.write('');
+    };
+
     dust.helpers.truthy=function(chunk,context,bodies,params){
         var value = dust.helpers.tap(params.value, chunk, context);
         var true_= dust.helpers.tap(params.true, chunk, context);
@@ -578,6 +599,15 @@ return dust;
         var out=(value) ? true_ : false_;
 
         return chunk.write(out);
+    };
+
+    dust.helpers.falsy=function(chunk,context,bodies,params){
+        var value = dust.helpers.tap(params.value, chunk, context);
+        var altValue=dust.helpers.tap(params.altValue, chunk, context);
+        var out=value;
+        if(!value) out=altValue;
+        else if(value==="0" || value==="false") out=altValue;
+        return chunk.write(out)
     };
 
     dust.helpers.hide=function(chunk,context,bodies,params){
@@ -596,6 +626,16 @@ return dust;
             disable='disabled';
         }
         return chunk.write(disable);
+    };
+
+    dust.helpers.toLower=function(chunk,context,bodies,params){
+        var value = dust.helpers.tap(params.value, chunk, context);
+        return chunk.write(value.toLowerCase());
+    };
+
+    dust.helpers.toUpper=function(chunk,context,bodies,params){
+        var value = dust.helpers.tap(params.value, chunk, context);
+        return chunk.write(value.toUpperCase());
     };
 
     dust.helpers.readonly=function(chunk,context,bodies,params){
@@ -678,39 +718,40 @@ return dust;
         return chunk.write(id);
     };
 
-
-    dust.helpers.inline={};
-
-    dust.helpers.inline.formatCurrency=function(val){
-        val=parseFloat(val);
-        var money;
-        try{
-            if(utils.isNumeric(val)){
-                money =val.toFixed(2);
-            }else{
-                money='';
-            }
-        }catch(ex){
-            money='';
-        }
-
-        return money;
+    dust.helpers.properCaseToSentence=function(chunk, context, bodies, params){
+        var value = dust.helpers.tap(params.value, chunk, context);
+        value=string.camelCaseToSpace(value);
+        value=value.charAt(0).toUpperCase() + value.slice(1);
+        return chunk.write(value);
     };
 
-    dust.helpers.inline.extFormatCurrency=function(val){
-        val=parseFloat(val);
-        var money;
-        if(utils.isNumeric(val)){
-            money =val.toFixed(2);
-            money = '$' + money.toString();
-        }else{
-            money='';
-        }
-
-        return money;
+    dust.helpers.camelCaseToSentence=function(chunk, context, bodies, params){
+        var value = dust.helpers.tap(params.value, chunk, context);
+        value=string.camelCaseToSpace(value);
+        value=value.charAt(0).toUpperCase() + value.slice(1);
+        return chunk.write(value);
     };
 
+    dust.helpers.count=function(chunk,context,bodies,params){
+        var count = dust.helpers.tap(params.value, chunk, context);
+        var minLength=dust.helpers.tap(params.minLength, chunk, context);
+        var content= dust.helpers.tap(params.content, chunk, context);
+        var out='';
+        if(!count || parseInt(count) < parseInt(minLength)){
+            out=content;
+        }
+        return chunk.write(out);
+    };
+
+    dust.helpers.href=function(chunk, context, bodies, params){
+        var attr='';
+        var href = dust.helpers.tap(params.value, chunk, context);
+        if(href!==undefined && href!==''){
+            attr='href="' + href + '"';
+        }
+
+        return chunk.write(attr);
+    };
 
     return dust;
 }));
-

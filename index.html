@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>Demo</title>
-    <script src="demo_components/elliptical-component/dist/webcomponents.js"></script>
+    <script src="demo_components/webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="stylesheet" href="demo_components/elliptical-sass/dist/elliptical.css">
-    <link rel="import" href="demo_components/sass-core-icons/sass-core-icons.html">
+    <link rel="import" href="imports.html">
     <link rel="stylesheet" href="demo_components/css-docs/docs.css">
     <link rel="stylesheet" href="css/styles.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -19,25 +19,21 @@
     <h5 class="padding-right hide-for-small">MOBILE FRIENDLY</h5>
 </header>
 <section class="doc-height">
-    <link rel="import" href="demo_components/mark-down/mark-down.html">
     <grid-row>
         <grid-columns class="default-12">
             <h3>Examples</h3>
             <hr>
-            <p>ui-navigation is a set of responsive, mobile-friendly navigation components: ui-navbar and ui-topbar. It includes versions for both elliptical and polymer web components.</p>
+            <p>ui-navigation is a set of responsive navigation polymer web components: ui-topbar, ui-topbar and ui-drawer-panel.
+
+            </p>
             <h4>Demos</h4>
-            <p>
-                <a href="ui-topbar.html">elliptical ui-topbar</a>
-            </p>
-            <p>
-                <a href="polymer-topbar.html">polymer ui-topbar</a>
-            </p>
-            <p>
-                <a href="ui-navbar.html">elliptical ui-navbar</a>
-            </p>
-            <p>
-                <a href="polymer-navbar.html">polymer ui-navbar</a>
-            </p>
+            <p></p>
+            <blockquote class="margin-top info">
+                <a href="ui-topbar.html" class="info">ui-topbar</a><br>
+                <a href="ui-navbar.html" class="info">ui-navbar</a><br>
+                <a href="http://ellipticaljs.github.io/mobile-friendly-prototype/" class="info" target="_blank">ui-drawer-panel</a>
+            </blockquote>
+
 
             <h3>Installation</h3>
             <hr>
@@ -48,36 +44,18 @@
                 ```
                 ```html
                 <xmp>
-                 <!--elliptical -->
-                 <link rel="stylesheet" href="bower_components/elliptical-sass/dist/elliptical.css">
-                 <link rel="import" href="bower_components/sass-core-icons/sass-core-icons.html">
-                 <link rel="import" href="bower_components/sass-content-icons/sass-content-icons.html">
-                 <link rel="import" href="bower_components/elliptical-component/elliptical-component.html">
-                 <link rel="import" href="bower_components/ui-navigation/ui-navbar.html" property="elliptical">
-
-                 <!-- polymer -->
-                 <link rel="stylesheet" href="bower_components/elliptical-sass/dist/elliptical.css">
-                 <link rel="import" href="bower_components/sass-core-icons/sass-core-icons.html">
-                 <link rel="import" href="bower_components/sass-content-icons/sass-content-icons.html">
-                 <link rel="import" href="bower_components/ui-navigation/polymer-navbar.html">
+                 <link rel="import" href="bower_components/ui-navigation/ui-navigation.html">
                  </xmp>
-
                 ```
             </mark-down>
 
-            <blockquote class="margin-top two info">
-                NOTE: Both the elliptical and polymer versions use the same custom tags, ui-topbar and ui-navbar, respectively.
-            </blockquote>
-
-            <blockquote class="margin-top two warning">
-                NOTE: for ui-topbar, substitute ui-topbar for ui-navbar in the above declarations.<br><br>
-                NOTE: should never declare both together...if using ui-navbar, only declare ui-navbar. Likewise, if using ui-topbar alone, only declare ui-topbar.
-            </blockquote>
 
             <h3 class="margin-top two">Documentation</h3>
             <hr>
+
+            <!--UI-TOPBAR -->
             <h4>UI-TOPBAR</h4>
-            ui-topbar is a reponsive bar component that relies on modern css flexbox for positioning of branding and menu elements within a top bar on desktop systems. On touch devices,
+            UI-TOPBAR is a reponsive bar component that relies on modern css flexbox for positioning of branding and menu elements within a top bar on desktop systems. On touch devices,
             it behaves as a drawer menu.
 
             <blockquote class="margin-top two warning">
@@ -103,12 +81,9 @@
                 <xmp>
                 <!-- base markup -->
                 <ui-topbar>
-                    <ui-toggle></ui-toggle>
-                    <touch-icons>
-                        <touch-icon>
-                            <span class="icon-content-more-vert gray"></span>
-                        </touch-icon>
-                    </touch-icons>
+                    <touch-bar>
+                        <ui-toggle></ui-toggle>
+                    </touch-bar>
                     <ui-brand>
                         <h5>My Brand</h5>
                     </ui-brand>
@@ -123,12 +98,14 @@
                         <touch-section header></touch-section>
                         <touch-section footer></touch-section>
                     </touch-drawer>
-                    <ui-toggle></ui-toggle>
-                    <touch-icons>
-                        <touch-icon>
-                            <span class="icon-content-more-vert gray"></span>
-                        </touch-icon>
-                    </touch-icons>
+                    <touch-bar>
+                        <ui-toggle></ui-toggle>
+                        <touch-icons>
+                            <touch-icon>
+                                <span class="icon-content-more-vert gray"></span>
+                            </touch-icon>
+                        </touch-icons>
+                    </touch-bar>
                     <ui-brand>
                         <h5>My Brand</h5>
                     </ui-brand>
@@ -164,8 +141,41 @@
                 ```
             </mark-down>
 
+            <h5 class="margin-top two">SEARCH</h5>
+            UI-SEARCH elements in touch-header or input elements with the attribute [role="search"] generate automatic listeners
+            <blockquote class="margin-top info">
+                TOUCH SEARCH<br>
+                touch-header>ui-search<br><br>
+
+                DESKTOP SEARCH<br>
+                input with role attribute=search<br><br>
+
+                SEARCH EVENT FIRED<br>
+                ui.[topbar].search
+            </blockquote>
+            <mark-down class="margin-top two">
+                ```html
+                <xmp>
+                    <ui-topbar>
+                        <touch-drawer>
+                            <touch-header>
+                                <ui-search>
+                                    <input type="text" placeholder="search">
+                                </ui-search>
+                            </touch-header>
+                        </touch-drawer>
+                        <section></section>
+                        <ui-menu class="right">
+                            <menu-item><input placeholder="Search" role="search"></menu-item>
+                        </ui-menu>
+                    </ui-topbar>
+                </xmp>
+                ```
+            </mark-down>
+
+            <!--UI-NAVBAR -->
             <h4 class="margin-top two">UI-NAVBAR</h4>
-            ui-navbar is a reponsive, composite navigation component. On touch devices, it behaves as a drawer menu.
+            UI-NAVBAR is a reponsive, composite navigation component. On touch devices, it behaves as a drawer menu.
             <h4 class="margin-top two">Markup</h4>
             <mark-down class="margin-top">
                 ```html
@@ -239,8 +249,9 @@
                 ```
             </mark-down>
 
+            <!--TOUCH-UI-DRAWER -->
             <h4 class="margin-top two">TOUCH-UI-DRAWER</h4>
-            touch-ui-drawer is dynamically added to the DOM by the navigation components...it is not created from markup. The component will clone
+            TOUCH-UI-DRAWER is dynamically added to the DOM by the navigation components...it is not created from markup. The component will clone
             touch-drawer markup to the drawer.
 
             <mark-down class="margin-top two">
@@ -248,9 +259,9 @@
                 <xmp>
                 <ui-navbar>
                   <touch-drawer>
-                      <touch-header></touch-header>
-                      <touch-section header></touch-section>
-                      <touch-section footer></touch-section>
+                      <touch-header></touch-header> <!--header component of drawer, inserted at the top of the drawer-->
+                      <touch-section header></touch-section> <!--header section of menu body, inserted before menu-->
+                      <touch-section footer></touch-section> <!--footer section of menu body, inserted after menu-->
                   </touch-drawer>
                 </ui-navbar>
                 </xmp>
@@ -258,11 +269,46 @@
             </mark-down>
 
             <p class="margin-top">
-            touch-ui-drawer populates the drawer by cloning ui-menu items to touch-ui-menu.
+            TOUCH-UI-DRAWER populates the drawer by cloning UI-MENU items to TOUCH-UI-MENU.
             </p>
+
+            <h4 class="margin-top two">MENUS AND DROPDOWNS</h4>
+            UI-MENUs are used to present navigation menu options. MENU-ITEM-DROPDOWN presents a menu dropdown on css hover.
+            User UI-DRODOWN for a simple dropdown list. Use UI-MEGA-DROPDOWN for a custom dropdown presentation.
+            <blockquote class="margin-top info">
+               UI-MENUs are automatically cloned to the mobile drawer.
+            </blockquote>
+            <mark-down class="margin-top two">
+                ```html
+                <xmp>
+                    <ui-topbar>
+                       <section class="center">
+                           <ui-menu>
+                               <menu-item><a>Link One</a></menu-item>
+                               <menu-item><a>Link Two</a></menu-item>
+                               <menu-item-dropdown>
+                                   <a>Link Three</a>
+                                   <ui-dropdown>
+                                       <menu-item><a>Sublink One</a></menu-item>
+                                       <menu-item><a>Sublink Two</a></menu-item>
+                                       <menu-item><a>Sublink Three</a></menu-item>
+                                   </ui-dropdown>
+                               </menu-item-dropdown>
+                               <menu-item-dropdown>
+                                   <a>Link Four</a>
+                                   <ui-mega-dropdown>
+                                      <!--custom html/css formatted content goes here-->
+                                   </ui-mega-dropdown>
+                               </menu-item-dropdown>
+                           </ui-menu>
+                       </section>
+                    </ui-topbar>
+                </xmp>
+                ```
+            </mark-down>
             <h5 class="margin-top two">EXCLUDING MENUS</h5>
-            a ui-menu with attribute [touch-menu="false"] will not be added to the drawer.<br>
-            a menu-item, menu-item-dropdown with attribute [touch-menu-item="false"] will not be added to the drawer.
+            a UI-MENU with attribute [touch-menu="false"] will not be added to the drawer.<br>
+            a MENU-ITEM, MENU-ITEM-DROPDOWN with attribute [touch-menu-item="false"] will not be added to the drawer.
             <mark-down class="margin-top two">
                 ```html
                 <xmp>
@@ -287,26 +333,134 @@
                 ```
             </mark-down>
 
-            <h5 class="margin-top two">SEARCH</h5>
-            search elements with the attribute [role="search"] will be cloned to the ui-touch-drawer header
+            <!--TOUCH EVENTS -->
+            <h5 class="margin-top two">TOUCH EVENTS</h5>
+            <p>
+            By default, UI-TOPBAR and UI-NAVBAR components will handle touch menu links. This is done to deliver the effect of closing the drawer before
+            the http resource request is made. This however can introduce issues for single page applications where delegated get requests are handled by an
+                external routing framework. You can keep this behavior and yet handle routing requests by setting window._location to your own service/singleton that
+                implements an 'href' setter.
+            </p>
+            <blockquote class="margin-top warning">
+               IMPLEMENT TOUCH MENU HREF<br>
+                window._location=MyService;<br><br>
+                where MyService.href implements an href setter
+            </blockquote>
+            <p>
+                Alternatively, you can simply disable the behavior by setting the attribute disableTouchEvents="true". You then will need to manually handle closing the drawer.
+            </p>
             <mark-down class="margin-top two">
                 ```html
                 <xmp>
-                <ui-navbar>
-                    <nav>
-                        <header>
-                            <ui-search role="search">
-                                <input type="text" placeholder="search">
-                            </ui-search>
-                        </header>
-                    </nav>
-                </ui-navbar>
+                    <ui-topbar disable-touch-events="true">
+
+                    </ui-topbar>
+                </xmp>
+                ```
+            </mark-down>
+            <blockquote class="margin-top info">
+                DISABLE TOUCH MENU EVENTS<br>
+                disableTouchEvents=true
+            </blockquote>
+
+            <h5 class="margin-top two">SELECTIVELY DISABLING TOUCH EVENTS</h5>
+            <p>You can also selectively disable touch events by setting a data-ignore attribute on the "a" tag. For example, this might be done for external linking in a new window</p>
+            <mark-down class="margin-top two">
+                ```html
+                <xmp>
+                    <ui-topbar>
+                        <ui-menu>
+                            <menu-item><a data-ignore></a></menu-item>
+                        </ui-menu>
+                    </ui-topbar>
+                </xmp>
+                ```
+            </mark-down>
+            <blockquote class="margin-top info">
+                SELECTIVE DISABLING TOUCH MENU EVENTS<br>
+                a[data-ignore]
+            </blockquote>
+
+            <h5 class="margin-top two">BRAND HOME LINK</h5>
+            <p>Setting a [home] attribute on the navigation brand/logo will trigger an automatic listener to for the home link specified in the homeUrl property</p>
+            <mark-down class="margin-top two">
+                ```html
+                <xmp>
+                    <ui-topbar home-url="/">
+                        <ui-brand>
+                            <h5 home>My Brand</h5>
+                        </ui-brand>
+                    </ui-topbar>
+                </xmp>
+                ```
+            </mark-down>
+            <blockquote class="margin-top info">
+                BRAND HOME LINK<br>
+                set homeUrl attribute on the component<br>
+                place a [home] attribute on any child element to trigger the listener
+            </blockquote>
+
+
+            <!--UI-DRAWER-PANEL-->
+            <h4 class="margin-top two">UI-DRAWER-PANEL</h4>
+            <p>
+                UI-DRAWER-PANEL is a mobile-first composite navigation component. This component however does not clone menu elements to the drawer. Additionally,
+                the drawer toggle is visible on desktop screen and devices.
+            </p>
+            <h4 class="margin-top two">Markup</h4>
+            <mark-down class="margin-top two">
+                ```html
+                <xmp>
+                    <ui-drawer-panel home-url="/">
+                        <ui-topbar>
+                            <ui-toggle></ui-toggle>
+                            <section class="space-between">
+                                <h3 home>My Brand</h3>
+                                <ui-menu>
+                                </ui-menu>
+                            </section>
+                            <ui-brand class="show-for-medium-down">
+                                <h4 home>My Brand</h4>
+                            </ui-brand>
+                        </ui-topbar>
+                        <ui-sidebar drawer>
+                            <header>
+                                <h4>Menu</h4>
+                                <span class="icon-content-close" close></span>
+                            </header>
+                            <ui-menu class="column">
+                                <menu-item>
+                                    <span class="icon-info-outline"></span>
+                                    <a>About</a>
+                                </menu-item>
+                                <ui-button-dropdown disable-blur="true">
+                                    <span class="icon-android"></span>
+                                    <a>Devices</a>
+                                    <ui-dropdown>
+                                        <menu-item><a>Sublink One</a></menu-item>
+                                        <menu-item><a>Sublink Two</a></menu-item>
+                                        <menu-item><a>Sublink Three</a></menu-item>
+                                        <menu-item><a>Sublink Four</a></menu-item>
+                                        <menu-item><a>Sublink Five</a></menu-item>
+                                    </ui-dropdown>
+                                </ui-button-dropdown>
+                            </ui-menu>
+                        </ui-sidebar>
+                    </ui-drawer-panel>
                 </xmp>
                 ```
             </mark-down>
 
-            <h4 class="margin-top two">Properties</h4>
-            <hr>
+            <blockquote class="margin-top warning">
+                DRAWER<br>
+                The drawer panel must be marked with a [drawer] attribute.
+            </blockquote>
+
+
+
+            <!--properties,methods,events -->
+            <p class="margin-top two">&nbsp;</p>
+            <h4 class="margin-top two">PROPERTIES</h4>
             <section class="docs margin-top two">
                 <h4>Public Properties</h4>
                 <hr>
@@ -331,6 +485,66 @@
                     <flex-box class="column last">
                         <span>default:</span>
                         <span>0</span>
+                    </flex-box>
+                </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>translateX</span>
+                    <flex-box class="column">
+                        <span>{String}</span>
+                        <span>drawer translation distance</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span>default:</span>
+                        <span>260px</span>
+                    </flex-box>
+                </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>overlayOpacity</span>
+                    <flex-box class="column">
+                        <span>{Number}</span>
+                        <span>opacity of overlay when showing drawer</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span>default:</span>
+                        <span>.5</span>
+                    </flex-box>
+                </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>overlayBackground</span>
+                    <flex-box class="column">
+                        <span>{String}</span>
+                        <span>overlay background</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span>default:</span>
+                        <span>#000</span>
+                    </flex-box>
+                </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>overlayOpenDuration</span>
+                    <flex-box class="column">
+                        <span>{Number}</span>
+                        <span>overlay show duration</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span>default:</span>
+                        <span>0</span>
+                    </flex-box>
+                </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>overlayCloseDuration</span>
+                    <flex-box class="column">
+                        <span>{Number}</span>
+                        <span>overlay hide duration</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span>default:</span>
+                        <span>150</span>
                     </flex-box>
                 </flex-box>
                 <hr>
@@ -371,14 +585,14 @@
                 </flex-box>
                 <hr>
                 <flex-box class="space-between full-width row">
-                    <span>touchEvents</span>
+                    <span>disableTouchEvents</span>
                     <flex-box class="column">
                         <span>{Boolean}</span>
-                        <span>touch menu href handled by script</span>
+                        <span>disable touch menu href handled by the component</span>
                     </flex-box>
                     <flex-box class="column last">
                         <span>default:</span>
-                        <span>true</span>
+                        <span>false</span>
                     </flex-box>
                 </flex-box>
                 <hr>
@@ -397,10 +611,45 @@
                         <span>[]</span>
                     </flex-box>
                 </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>easing</span>
+                    <flex-box class="column">
+                        <span>{String}</span>
+                        <span>drawer easing animation</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span>default:</span>
+                        <span>ease-in-out</span>
+                    </flex-box>
+                </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>cloneDelay</span>
+                    <flex-box class="column">
+                        <span>{Number}</span>
+                        <span>delay touch drawer is cloned from the DOM</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span>default:</span>
+                        <span>750</span>
+                    </flex-box>
+                </flex-box>
+                <hr>
+                <flex-box class="space-between full-width row">
+                    <span>touchDelay</span>
+                    <flex-box class="column">
+                        <span>{Number}</span>
+                        <span>delay tap triggers drawer panel</span>
+                    </flex-box>
+                    <flex-box class="column last">
+                        <span>default:</span>
+                        <span>50</span>
+                    </flex-box>
+                </flex-box>
             </section>
 
-            <h4 class="margin-top two">Methods</h4>
-            <hr>
+            <h4 class="margin-top two">METHODS</h4>
             <section class="docs margin-top two">
                 <h4>Public Methods</h4>
                 <hr>
@@ -439,8 +688,7 @@
                 </flex-box>
             </section>
 
-            <h4 class="margin-top two">Events</h4>
-            <hr>
+            <h4 class="margin-top two">EVENTS</h4>
             <section class="docs margin-top two">
                 <h4>Public Events</h4>
                 <hr>

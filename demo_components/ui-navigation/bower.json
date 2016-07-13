@@ -1,7 +1,7 @@
 {
   "name": "ui-navigation",
   "description": "navigation web components",
-  "version":"1.0.0",
+  "version":"1.2.6",
   "main": "ui-navbar.html",
   "authors": [
     "S. Francis"
@@ -40,12 +40,11 @@
     "bk"
   ],
   "dependencies": {
-    "elliptical-component": "~1.0.17",
-    "elliptical-polymer-behaviors": "~1.0.11",
-    "elliptical-sass": "~1.1.15",
+    "elliptical-sass": "~1.2.1",
     "sass-core-icons": "~1.0.4",
     "sass-content-icons": "~1.0.4",
     "polymer": "Polymer/polymer#^1.0.0",
-    "ui-behaviors": ">=0.1.1"
+    "ui-behaviors": ">1.2.0",
+    "ui-button-dropdown":"~1.2.0"
   }
 }

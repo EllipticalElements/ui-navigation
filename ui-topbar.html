@@ -5,19 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <title>Demo</title>
-    <script src="demo_components/elliptical-component/dist/webcomponents.js"></script>
+    <script src="demo_components/webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="stylesheet" href="demo_components/elliptical-sass/dist/elliptical.css">
+    <link rel="import" href="imports.html">
+    <link rel="stylesheet" href="demo_components/css-docs/docs.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="import" href="demo_components/sass-core-icons/sass-core-icons.html">
-    <link rel="import" href="demo_components/sass-content-icons/sass-content-icons.html">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic" rel="stylesheet">
-    <link rel="import" href="demo_components/elliptical-component/elliptical-component.html">
-    <link rel="import" href="demo_components/ui-navigation/ui-topbar.html" property="elliptical">
-    <link rel="import" href="demo_components/mark-down/mark-down.html">
 </head>
 <body>
-
 <ui-container>
     <ui-topbar home-icon="icon-core-home-2">
         <touch-drawer>
@@ -27,26 +23,36 @@
                 </ui-search>
             </touch-header>
         </touch-drawer>
-        <ui-toggle></ui-toggle>
-        <touch-icons>
-            <touch-icon>
-                <span class="icon-content-more-vert gray"></span>
-            </touch-icon>
-        </touch-icons>
+        <touch-bar>
+            <ui-toggle></ui-toggle>
+            <touch-icons>
+                <touch-icon>
+                    <span class="icon-content-more-vert gray"></span>
+                </touch-icon>
+            </touch-icons>
+        </touch-bar>
         <ui-brand>
             <h5>My Brand</h5>
         </ui-brand>
         <section class="center">
             <ui-menu class="default-light">
-                <menu-item><a>Link One</a></menu-item>
-                <menu-item><a>Link Two</a></menu-item>
+                <menu-item><a href="test.html">Link One</a></menu-item>
+                <menu-item><a href="https://www.google.com" target="_blank" data-ignore>Link Two</a></menu-item>
                 <menu-item><a>Link Three</a></menu-item>
                 <menu-item><a>Link Four</a></menu-item>
+                <menu-item-dropdown>
+                <a>Link Three</a>
+                <ui-dropdown>
+                    <menu-item><a>Sublink One</a></menu-item>
+                    <menu-item><a>Sublink Two</a></menu-item>
+                    <menu-item><a>Sublink Three</a></menu-item>
+                </ui-dropdown>
+                </menu-item-dropdown>
             </ui-menu>
         </section>
         <ui-menu class="right default-light">
-            <menu-item><a><span class="desktop icon-core-unlock"></span><span class="touch">Sign-In</span></a></menu-item>
-            <menu-item><a><span class="desktop icon-core-checkbox"></span><span class="touch">Sign-Up</span></a></menu-item>
+            <menu-item><a><span class="hide-for-medium-down icon-core-unlock"></span><span class="show-for-medium-down">Sign-In</span></a></menu-item>
+            <menu-item><a><span class="hide-for-medium-down icon-core-checkbox"></span><span class="show-for-medium-down">Sign-Up</span></a></menu-item>
         </ui-menu>
     </ui-topbar>
     <section class="outer">
@@ -85,18 +91,11 @@
                             </ui-menu>
                         </section>
                         <ui-menu class="right default-light">
-                            <menu-item><a><span class="desktop icon-core-unlock"></span><span class="touch">Sign-In</span></a></menu-item>
-                            <menu-item><a><span class="desktop icon-core-checkbox"></span><span class="touch">Sign-Up</span></a></menu-item>
+                            <menu-item><a><span class="hide-for-medium-down icon-core-unlock"></span><span class="show-for-medium-down">Sign-In</span></a></menu-item>
+                            <menu-item><a><span class="hide-for-medium-down icon-core-checkbox"></span><span class="show-for-medium-down">Sign-Up</span></a></menu-item>
                         </ui-menu>
                     </ui-topbar>
                     </xmp>
-                    ```
-                    ```js
-                    Elliptical(function () {
-                       $(window).on('ui.navbar.search', function (event, data) {
-                           console.log(data);
-                       });
-                    });
                     ```
                 </mark-down>
                 <p class="margin-top two">
@@ -109,17 +108,8 @@
         </grid-row>
     </section>
 
-<footer>
-</footer>
+
 </ui-container>
 
-
-<script>
-    Elliptical(function () {
-        $(window).on('ui.navbar.search', function (event, data) {
-            console.log(data);
-        });
-    });
-</script>
 </body>
 </html>
