@@ -96,6 +96,7 @@
             this._event(this.element,this._data.click,'ui-toggle',this._onToggleClick.bind(this));
             this._event($(window),'navScrollTop',this._onNavScrollTop.bind(this));
             this._event(this.element,this._data.click,'[home]',this._onBrandClick.bind(this));
+            this._event($window,'menu-navigation-create',this. _onRequestTouchMenuCreate.bind(this));
         },
 
         _onToggleClick:function(event){

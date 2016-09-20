@@ -90,14 +90,16 @@
                 this._onDesktopSearch(search);
             }
             //if not touch device, call desktop events
+          var $window=$(window);
             if(!this._device.touch) this._desktopEvents();
             var toggle = this.element.find('ui-toggle');
             this._data.set('toggle', toggle);
             var orientationEvent = this._device.orientationEvent;
-            this._event($(window),orientationEvent,this._onOrientationChange.bind(this));
+            this._event($window,orientationEvent,this._onOrientationChange.bind(this));
             this._event(this.element,this._data.click,'ui-toggle',this._onToggleClick.bind(this));
-            this._event($(window),'navScrollTop',this._onNavScrollTop.bind(this));
+            this._event($window,'navScrollTop',this._onNavScrollTop.bind(this));
             this._event(this.element,this._data.click,'[home]',this._onBrandClick.bind(this));
+            this._event($window,'menu-navigation-create',this. _onRequestTouchMenuCreate.bind(this));
         },
 
         _onToggleClick:function(event){
