@@ -1,0 +1,257 @@
+<link rel="import" href="../elliptical-polymer-behaviors/component-behavior.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<!--
+  css variables
+  --topbar-search-color:#bbb
+  --topbar-search-hover-color:#bbb
+  --topbar-search-transition: all .25s linear
+  --topbar-search-overlay-background:rgba(33,34,34,.96)
+-->
+<style>
+  .search-overlay{
+    z-index: 99999;
+    background: rgba(33,34,34,.96);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    left: 0;
+    top: 0;
+    color: #888;
+  }
+  .search-overlay-inner{
+    display:flex;
+    width:900px;
+    max-width:100%;
+    margin:0 auto;
+    min-height:500px;
+    margin-top:3em;
+    justify-content:space-between;
+  }
+  .search-overlay-inner textarea{
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0;
+    white-space: pre-wrap!important;
+    word-wrap: break-word;
+    color: #f2f2f2;
+    resize: none;
+    width: 600px;
+    overflow: hidden;
+    font-size:70px;
+    line-height: 60px;
+    height:150px;
+  }
+  .search-overlay-inner textarea::placeholder{
+    color:#666 !important;
+  }
+  .search-overlay-inner textarea::-webkit-input-placeholder{
+    color:#666 !important;
+  }
+  .search-overlay-inner textarea::-moz-placeholder{
+    color:#666 !important;
+  }
+  .search-overlay-inner textarea:-ms-input-placeholder{
+    color:#666 !important;
+  }
+  .search-overlay-inner textarea:focus{
+    outline:none !important;
+    border:0 !important;
+  }
+  .search-overlay-inner .search-icon{
+    font-size:48px;
+    cursor:pointer;
+    color:#7A7B7B;
+  }
+  .search-overlay-inner .search-icon:hover{
+    color:#fff;
+  }
+
+  @media (max-width: 1024px) {
+    .search-overlay-inner{
+      min-height:0;
+      margin-top:4em;
+    }
+    .search-overlay-inner .search-icon{
+      font-size:48px;
+      display:block;
+      margin-top:-40px;
+      margin-right:10px;
+    }
+    .search-overlay-inner textarea{
+      width: 90%;
+      overflow: hidden;
+      font-size:36px;
+      line-height: 30px;
+      height:200px;
+      margin-left:32px;
+    }
+  }
+</style>
+<dom-module id="topbar-search">
+  <style>
+    :host {
+       display:block;
+    }
+
+    :host iron-icon{
+      color:var(--topbar-search-color,#bbb);
+      cursor:pointer;
+      transition:all .25s linear;
+    }
+
+    :host iron-icon:hover{
+      color:var(--topbar-search-hover-color,#bbb);
+      cursor:pointer;
+      transition:var(--topbar-search-transition,all .25s linear);
+    }
+
+    :host.hide {
+      display: none;
+    }
+
+  </style>
+  <template>
+      <iron-icon icon="search" on-tap="_onTap"></iron-icon>
+  </template>
+</dom-module>
+<script>
+
+  Polymer({
+
+    is: 'topbar-search',
+
+    behaviors: [Elliptical.ComponentBehavior],
+
+    properties: {
+      background:{
+        type:String,
+        value:'#ea4335'
+      },
+      searchContainer:{
+        type:String,
+        value:'ui-container'
+      },
+      searchUrl:{
+        type:String,
+        value:null
+      },
+      locationService:{
+        type:String,
+        value:null
+      },
+      cssClass:{
+        type:String,
+        value:null
+      },
+      _searchContainer:{
+        type:Object,
+        value:null
+      },
+      _searchElement:{
+        type:Object,
+        value:null
+      },
+      _searchInput:{
+        type:Object,
+        value:null
+      },
+      _element:{
+        type:Object,
+        value:null
+      },
+      _locationService:{
+        type:Object,
+        value:null
+      }
+    },
+
+    listeners: {},
+
+    ready: function () {
+      this._setLocationService();
+      var selector=this.searchContainer;
+      this._searchContainer=$(selector);
+    },
+
+    detached:function(){
+
+    },
+
+    _onTap:function(){
+      this._launchSearch();
+      this._searchEvents();
+    },
+
+    _onSearchKeyPress:function(event){
+      if(event.which===13) this._onSearchClose();
+    },
+
+    _onSearchClose:function(){
+      var searchElement=this._searchElement;
+      var input=this._searchInput;
+      var val=input.val();
+      this._searchOff();
+      searchElement.remove();
+      if(val && val!=='') {
+        this._goto(val);
+      }
+    },
+
+    _setLocationService:function(){
+      var locationService=this.locationService;
+      if(locationService) this._locationService=this.$service(locationService);
+    },
+
+
+    _launchSearch:function(){
+      var container=this._searchContainer;
+      var searchElement=this._getSearchElement();
+      this._searchElement =searchElement;
+      container.append(searchElement);
+      var textArea=searchElement.find('textarea');
+      this._searchInput=textArea;
+      textArea[0].focus();
+    },
+
+    _searchEvents:function(){
+      var onSearchKeyPress=this._onSearchKeyPress.bind(this);
+      var onSearchClose=this._onSearchClose.bind(this);
+      var click=this._deviceClickEvent();
+      $(document).on('keypress.search','[data-id="txtSearchArea"]',onSearchKeyPress);
+      $(document).on(click + '.search','.search-icon',onSearchClose);
+    },
+
+    _goto:function(val){
+      var baseUrl=this.searchUrl;
+      if(!baseUrl){
+        console.warn('warning: topbar search has not search forward url set');
+        return false;
+      }
+      baseUrl+='?s=' + val;
+      var Location=this._locationService;
+      if(Location) Location.href=baseUrl;
+      else location.href=baseUrl;
+    },
+
+    _searchOff:function(){
+      var click=this._deviceClickEvent();
+      $(document).off('keypress.search');
+      $(document).off(click + '.search');
+    },
+
+    _getSearchElement:function(){
+      var cssClass=this.cssClass;
+      if(!cssClass) cssClass='';
+      return $('<div class="search-overlay ' + cssClass + '"><div class="search-overlay-inner"><textarea data-id="txtSearchArea" placeholder="Search"></textarea><div><span class="icon-close search-icon"></span></div></div></div>');
+    },
+
+    show:function(){
+      this._launchSearch();
+      this._searchEvents();
+    }
+
+  });
+
+</script>
