@@ -125,6 +125,10 @@
     behaviors: [Elliptical.ComponentBehavior],
 
     properties: {
+      queryString:{
+        type:String,
+        value:'s'
+      },
       background:{
         type:String,
         value:'#ea4335'
@@ -229,7 +233,7 @@
         console.warn('warning: topbar search has not search forward url set');
         return false;
       }
-      baseUrl+='?s=' + val;
+      baseUrl+='?' + this.queryString + '=' + val;
       var Location=this._locationService;
       if(Location) Location.href=baseUrl;
       else location.href=baseUrl;
