@@ -67,6 +67,10 @@
             cloneDelay:{
                 type:Number,
                 value:750
+            },
+            touchParentNodeLink:{
+                type:Boolean,
+                value:false
             }
 
         },
@@ -90,7 +94,7 @@
                 this._onDesktopSearch(search);
             }
             //if not touch device, call desktop events
-            var $window=$(window);
+          var $window=$(window);
             if(!this._device.touch) this._desktopEvents();
             var toggle = this.element.find('ui-toggle');
             this._data.set('toggle', toggle);
